@@ -39,4 +39,5 @@ services.udev.extraRules = ''
 ```
 ### To-Do
 
+  - [ ] Upgrade to supported NixOS `24.11`
   - [ ] Finish setting up `SOPS` to manage keys for reproducable ADB server
