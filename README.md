@@ -6,7 +6,7 @@ This VM includes `tailscale` and can be removed if you prefer.
 
 ### Adding USB devices to the VM
 
-`lsusb` to locate the devices `vendorID` and `productID`, you will need to add the `0x` within your nix config before each value.
+Run `lsusb` on your `VM Host` system to locate the devices `vendorID` and `productID`, you will need to add the `0x` within your nix config before each value.
 
 `guest.nix`
 ```
