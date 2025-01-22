@@ -4,6 +4,15 @@ This VM includes `tailscale` and can be removed if you prefer.
 
 <mark>Note:</mark> VM set for `3 * 1024` of memory usage, known bug in `QEMU` setting `2 Gig` memory usage, recommended to set above or bellow.
 
+### Test It
+
+```
+git clone https://github.com/noflcl/microvm-adb.git
+cd microvm-adb
+
+nix run .#vm-adb
+```
+
 ### Adding USB devices to the VM
 
 Run `lsusb` on your `VM Host` system to locate the devices `vendorID` and `productID`, you will need to add the `0x` within your nix config before each value.
