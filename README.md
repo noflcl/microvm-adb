@@ -16,7 +16,7 @@ microvm.devices = [
 
 ```
 
-Your `VM host` will need to set the systemd services file to pass the device to quem guests.
+Your `VM host` will need to setup a systemd services file to pass the device to qemu guest.
 
 `host.nix`
 
