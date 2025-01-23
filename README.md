@@ -15,8 +15,7 @@ nix run .#vm-adb
 
 ### Adding Devices To VM
 
-Permission setup is automatic for declared "pci' devices, but manual for "usb" devices.
-Run `lsusb` on your `VM Host` system to locate the devices `vendorID` and `productID`, you will need to add the `0x` within your nix config before each value.
+Permission setup is automatic for declared "pci' devices, but manual for "usb" devices. To pass a USB through run `lsusb` on your `VM Host` system to locate the devices `vendorID` and `productID`, you will need to add the prefix of `0x` to each ID within the guests configuration.
 
 `guest.nix`
 ```
@@ -30,7 +29,7 @@ devices = [
 
 `host.nix`
 
-USB device paths are not directly translatable to udev rules. Your `VM host` will need to setup a systemd services to pass the devices to qemu guest.
+USB device paths are not directly translatable to udev rules. Your `VM host` will need to setup a systemd services file to pass the devices to qemu guest. You can omit the `0x` at the beginning of your IDs here.
 
 ```
 ###
