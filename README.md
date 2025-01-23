@@ -17,6 +17,8 @@ nix run .#vm-adb
 
 Permission setup is automatic for declared "pci' devices, but manual for "usb" devices. To pass a USB through run `lsusb` on your `VM Host` system to locate the devices `vendorID` and `productID`, you will need to add the prefix of `0x` to each ID within the guests configuration.
 
+#### USB Passthrough
+
 `guest.nix`
 ```
 # lsusb to find vendorID & productID, add the `0x` prefix
@@ -29,7 +31,7 @@ devices = [
 
 `host.nix`
 
-USB device paths are not directly translatable to udev rules. Your `VM host` will need to setup a systemd services file to pass the devices to qemu guest. You can omit the `0x` at the beginning of your IDs here.
+USB device paths are not directly translatable to udev rules. Your `VM host` will need to setup a udev services file to pass the devices to qemu guest. You can omit the `0x` at the beginning of your IDs here.
 
 ```
 ###
@@ -40,6 +42,11 @@ services.udev.extraRules = ''
   SUBSYSTEM=="usb", ATTR{idVendor}=="18d1", ATTR{idProduct}=="4ee0", GROUP="kvm"
 '';
 ```
+
+#### PCI Passthrough
+
+Read the MicroVM docs over [here](https://github.com/astro/microvm.nix/blob/main/doc/src/devices.md) for setting up PCI Passthrough. The USB on my motherboard has to many items on the PCI bus for me to sacrifice it to the VM 😋 so I opt to just pass USB and create the udev rules required.
+
 ### To-Do
 
   - [ ] Upgrade to supported NixOS `24.11`
